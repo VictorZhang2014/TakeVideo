@@ -12,6 +12,7 @@
 #import "ZRMediaCaptureController.h"
 #import "ZRVideoPlayerController.h"
 #import "ZRAssetExportSession.h"
+#import "ZRCircleProgress.h"
 
 
 
@@ -55,16 +56,26 @@
 }
 
 - (void)compressVideo {
+    ZRCircleProgress *circleProgress = [[ZRCircleProgress alloc] init];
+    [self.view addSubview:circleProgress];
     
     NSURL *outputFileURL = [NSURL fileURLWithPath:[ZRAssetExportSession generateAVAssetTmpPath]];
     ZRAssetExportSession *encoder = [ZRAssetExportSession.alloc initWithAsset:[AVAsset assetWithURL:self.playURL]];
     encoder.outputFileType = AVFileTypeMPEG4;
     encoder.outputURL = outputFileURL;
+    [encoder exportAsynchronouslyWithProgressing:^(float progress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [circleProgress startWithProgressing:progress];
+        });
+    }];
     [encoder exportAsynchronouslyWithCompletionHandler:^
      {
          if (encoder.status == AVAssetExportSessionStatusCompleted)
          {
-             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 [circleProgress dismiss];
+             });
+         
              AVAssetTrack *videoTrack = nil;
              AVURLAsset *asset = (AVURLAsset *)[AVAsset assetWithURL:encoder.outputURL];
              NSArray *videoTracks = [asset tracksWithMediaType:AVMediaTypeVideo];

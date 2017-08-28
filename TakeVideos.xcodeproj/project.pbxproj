@@ -21,6 +21,7 @@
 		9059C1411F4147B90077FCB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9059C13F1F4147B90077FCB5 /* Main.storyboard */; };
 		9059C1431F4147B90077FCB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9059C1421F4147B90077FCB5 /* Assets.xcassets */; };
 		9059C1461F4147B90077FCB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9059C1441F4147B90077FCB5 /* LaunchScreen.storyboard */; };
+		90CFDE421F53CAB8000CAA80 /* ZRCircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CFDE411F53CAB8000CAA80 /* ZRCircleProgress.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		9059C1421F4147B90077FCB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9059C1451F4147B90077FCB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9059C1471F4147B90077FCB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90CFDE401F53CAB8000CAA80 /* ZRCircleProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRCircleProgress.h; sourceTree = "<group>"; };
+		90CFDE411F53CAB8000CAA80 /* ZRCircleProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRCircleProgress.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,8 @@
 		90559B161F4FCE67000DCBB8 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				90CFDE401F53CAB8000CAA80 /* ZRCircleProgress.h */,
+				90CFDE411F53CAB8000CAA80 /* ZRCircleProgress.m */,
 				901E136E1F51581A003B181F /* ZRAssetExportSession.h */,
 				901E136F1F51581A003B181F /* ZRAssetExportSession.m */,
 				90559B171F4FCE67000DCBB8 /* ZRMediaCaptureController.h */,
@@ -204,6 +209,7 @@
 				9059C13E1F4147B90077FCB5 /* ViewController.m in Sources */,
 				90559B211F4FCE67000DCBB8 /* ZRVideoCaptureViewController.m in Sources */,
 				90559B221F4FCE67000DCBB8 /* ZRVideoPlayerController.m in Sources */,
+				90CFDE421F53CAB8000CAA80 /* ZRCircleProgress.m in Sources */,
 				9059C13B1F4147B90077FCB5 /* AppDelegate.m in Sources */,
 				90559B201F4FCE67000DCBB8 /* ZRMediaCaptureView.m in Sources */,
 				901E13701F51581A003B181F /* ZRAssetExportSession.m in Sources */,

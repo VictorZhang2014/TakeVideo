@@ -11,9 +11,9 @@
 //  3.通过第二步的方法，导出成功还是失败，查看回调函数`exportAsynchronouslyWithCompletionHandler:`的参数属性status，如果失败了，会有失败信息会输出
 //
 
-
-
 #import "ZRAssetExportSession.h"
+
+#define ZRAssetExportProgressName            @"progress"
 
 @interface ZRAssetExportSession ()
 {
@@ -33,6 +33,7 @@
 @property (nonatomic, strong) AVAssetWriterInput *audioInput;
 @property (nonatomic, strong) dispatch_queue_t inputQueue;
 @property (nonatomic, strong) void (^completionHandler)();
+@property (nonatomic, strong) void (^progressingHandler)(float progress);
 
 @end
 
@@ -79,6 +80,24 @@
         AVSampleRateKey: @44100,
         AVEncoderBitRateKey: @128000,
         };
+    }
+}
+
+- (void)exportAsynchronouslyWithProgressing:(void (^)(float progress))progressingHandler
+{
+    [self addObserver:self forKeyPath:ZRAssetExportProgressName options:NSKeyValueObservingOptionNew context:nil];
+    
+    if (progressingHandler) {
+        self.progressingHandler = progressingHandler;
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    float progressing = [[change objectForKey:@"new"] floatValue];
+    if ([keyPath isEqualToString:ZRAssetExportProgressName]) {
+        if (self.progressingHandler) {
+            self.progressingHandler(progressing);
+        }
     }
 }
 
@@ -477,6 +496,10 @@
     self.audioInput = nil;
     self.inputQueue = nil;
     self.completionHandler = nil;
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:ZRAssetExportProgressName];
 }
 
 + (NSString *)generateAVAssetTmpPath {

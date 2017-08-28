@@ -122,6 +122,9 @@
  */
 @property (nonatomic, assign, readonly) float progress;
 
+- (void)exportAsynchronouslyWithProgressing:(void (^)(float progress))progressingHandler;
+
+
 /**
  * The status of the export session.
  *
