@@ -34,6 +34,7 @@
 @property (nonatomic, strong) dispatch_queue_t inputQueue;
 @property (nonatomic, strong) void (^completionHandler)();
 @property (nonatomic, strong) void (^progressingHandler)(float progress);
+@property (nonatomic, assign) BOOL isObservedProgress;
 
 @end
 
@@ -85,6 +86,7 @@
 
 - (void)exportAsynchronouslyWithProgressing:(void (^)(float progress))progressingHandler
 {
+    _isObservedProgress = YES;
     [self addObserver:self forKeyPath:ZRAssetExportProgressName options:NSKeyValueObservingOptionNew context:nil];
     
     if (progressingHandler) {
@@ -499,7 +501,8 @@
 }
 
 - (void)dealloc {
-    [self removeObserver:self forKeyPath:ZRAssetExportProgressName];
+    if (_isObservedProgress)
+        [self removeObserver:self forKeyPath:ZRAssetExportProgressName];
 }
 
 + (NSString *)generateAVAssetTmpPath {
