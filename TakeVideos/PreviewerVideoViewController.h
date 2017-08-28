@@ -14,4 +14,6 @@
 
 @property (nonatomic, assign) NSTimeInterval videoInterval;
 
+@property (nonatomic, assign) BOOL useFirstCompression;
+
 @end

@@ -58,6 +58,7 @@
 @property (nonatomic, strong) UIButton *flashLightBtn;
 
 @property (nonatomic, strong) ZRDownArrow *downArrowForDismiss;
+@property (nonatomic, strong) UIButton *dismissButton;
 
 @end
 
@@ -149,6 +150,7 @@
         cancelBtn.translatesAutoresizingMaskIntoConstraints = NO;
         [cancelBtn addTarget:self action:@selector(cancelTakingVideo) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:cancelBtn];
+        _dismissButton = cancelBtn;
         NSDictionary *cancelBtnDic = NSDictionaryOfVariableBindings(cancelBtn);
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(30)-[cancelBtn(==70)]" options:0 metrics:nil views:cancelBtnDic]];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[cancelBtn(==50)]-(30)-|" options:0 metrics:nil views:cancelBtnDic]];
@@ -268,6 +270,20 @@
 - (void)showDismissButton:(BOOL)showDismiss {
     self.downArrowForDismiss.hidden = !showDismiss;
 }
+
+//- (void)disabledAllSubviewsEvents {
+//    self.cameraBtnSwitch.enabled = NO;
+//    self.captureButton.enabled = NO;
+//    self.flashLightBtn.enabled = NO;
+//    self.dismissButton.enabled = NO;
+//}
+//
+//- (void)enabledAllSubviewsEvents {
+//    self.cameraBtnSwitch.enabled = YES;
+//    self.captureButton.enabled = YES;
+//    self.flashLightBtn.enabled = YES;
+//    self.dismissButton.enabled = YES;
+//}
 
 - (void)dealloc
 {

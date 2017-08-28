@@ -156,7 +156,7 @@
     
     AVURLAsset *avAsset = [AVURLAsset URLAssetWithURL:sourceURL options:nil];
     NSArray *compatiblePresets = [AVAssetExportSession exportPresetsCompatibleWithAsset:avAsset];
-    NSString* resultQuality = AVAssetExportPresetMediumQuality;
+    NSString* resultQuality = AVAssetExportPreset960x540;
     
     if ([compatiblePresets containsObject:resultQuality]) {
         int random = arc4random() % 1000000;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901E13701F51581A003B181F /* ZRAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E136F1F51581A003B181F /* ZRAssetExportSession.m */; };
+		901E13791F516FE0003B181F /* ZRTakeVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E13781F516FE0003B181F /* ZRTakeVideoViewController.m */; };
 		90559B1F1F4FCE67000DCBB8 /* ZRMediaCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90559B181F4FCE67000DCBB8 /* ZRMediaCaptureController.m */; };
 		90559B201F4FCE67000DCBB8 /* ZRMediaCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90559B1A1F4FCE67000DCBB8 /* ZRMediaCaptureView.m */; };
 		90559B211F4FCE67000DCBB8 /* ZRVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90559B1C1F4FCE67000DCBB8 /* ZRVideoCaptureViewController.m */; };
@@ -22,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		901E136E1F51581A003B181F /* ZRAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRAssetExportSession.h; sourceTree = "<group>"; };
+		901E136F1F51581A003B181F /* ZRAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRAssetExportSession.m; sourceTree = "<group>"; };
+		901E13771F516FE0003B181F /* ZRTakeVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRTakeVideoViewController.h; sourceTree = "<group>"; };
+		901E13781F516FE0003B181F /* ZRTakeVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRTakeVideoViewController.m; sourceTree = "<group>"; };
 		90559B171F4FCE67000DCBB8 /* ZRMediaCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRMediaCaptureController.h; sourceTree = "<group>"; };
 		90559B181F4FCE67000DCBB8 /* ZRMediaCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRMediaCaptureController.m; sourceTree = "<group>"; };
 		90559B191F4FCE67000DCBB8 /* ZRMediaCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRMediaCaptureView.h; sourceTree = "<group>"; };
@@ -59,12 +65,16 @@
 		90559B161F4FCE67000DCBB8 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				901E136E1F51581A003B181F /* ZRAssetExportSession.h */,
+				901E136F1F51581A003B181F /* ZRAssetExportSession.m */,
 				90559B171F4FCE67000DCBB8 /* ZRMediaCaptureController.h */,
 				90559B181F4FCE67000DCBB8 /* ZRMediaCaptureController.m */,
 				90559B191F4FCE67000DCBB8 /* ZRMediaCaptureView.h */,
 				90559B1A1F4FCE67000DCBB8 /* ZRMediaCaptureView.m */,
 				90559B1B1F4FCE67000DCBB8 /* ZRVideoCaptureViewController.h */,
 				90559B1C1F4FCE67000DCBB8 /* ZRVideoCaptureViewController.m */,
+				901E13771F516FE0003B181F /* ZRTakeVideoViewController.h */,
+				901E13781F516FE0003B181F /* ZRTakeVideoViewController.m */,
 				90559B1D1F4FCE67000DCBB8 /* ZRVideoPlayerController.h */,
 				90559B1E1F4FCE67000DCBB8 /* ZRVideoPlayerController.m */,
 			);
@@ -189,12 +199,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				90559B261F500874000DCBB8 /* PreviewerVideoViewController.m in Sources */,
+				901E13791F516FE0003B181F /* ZRTakeVideoViewController.m in Sources */,
 				90559B1F1F4FCE67000DCBB8 /* ZRMediaCaptureController.m in Sources */,
 				9059C13E1F4147B90077FCB5 /* ViewController.m in Sources */,
 				90559B211F4FCE67000DCBB8 /* ZRVideoCaptureViewController.m in Sources */,
 				90559B221F4FCE67000DCBB8 /* ZRVideoPlayerController.m in Sources */,
 				9059C13B1F4147B90077FCB5 /* AppDelegate.m in Sources */,
 				90559B201F4FCE67000DCBB8 /* ZRMediaCaptureView.m in Sources */,
+				901E13701F51581A003B181F /* ZRAssetExportSession.m in Sources */,
 				9059C1381F4147B90077FCB5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

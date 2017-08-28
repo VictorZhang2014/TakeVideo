@@ -117,6 +117,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self calculateVideoSize];
     [self setupPlayer];
     [self setupUI];
 }
@@ -149,6 +150,7 @@
     CGFloat btViewHeight = 120;
     UIView * bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, viewFrame.size.height - btViewHeight, viewFrame.size.width, btViewHeight)];
     bottomView.backgroundColor = [UIColor clearColor];
+    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     
     CGFloat btnWidth = ZRVideoPlayerButtonDiameter;
@@ -186,6 +188,10 @@
     progressView.backgroundColor = [UIColor clearColor];
     _progressView = progressView;
     [bottomView insertSubview:progressView belowSubview:playBtn];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        bottomView.hidden = NO;
+    });
 }
 
 - (UIView *)getButtonWithFrame:(CGRect)frame image:(NSString *)imageName type:(int)type {
@@ -338,6 +344,24 @@
         self.videoTotalLength = totalBuffer;
         NSLog(@"视频共缓冲：%.2f",totalBuffer);
     }
+}
+
+- (void)calculateVideoSize {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError * error;
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    int random = arc4random() % 10000001;
+    NSString *filename = [NSString stringWithFormat:@"%@/%d.mp4", path, random];
+    
+    BOOL success = [fileManager copyItemAtURL:self.url toURL:[NSURL fileURLWithPath:filename isDirectory:NO] error:&error];
+    if (!success) {
+        success = [fileManager copyItemAtPath:self.url.absoluteString toPath:filename error:&error];
+    }
+    NSDictionary *fileAttr = [fileManager attributesOfItemAtPath:filename error:&error];
+    long fileSize = [[fileAttr objectForKey:NSFileSize] longValue];
+    NSString *bytes = [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
+    float fileMB = fileSize / 1024.0 / 1024.0;
+    NSLog(@"fileMB = %lf   bytes=%@", fileMB, bytes);
 }
 
 - (void)dealloc

@@ -116,6 +116,7 @@ typedef void(^ZRPropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [layer addSublayer:_captureVideoPreviewLayer];
     
     ZRMediaCaptureView *captureView = [[ZRMediaCaptureView alloc] init];
+    captureView.hidden = YES;
     captureView.mediaCaptureDelegate = self;
     _mediaCaptureView = captureView;
     [preview addSubview:captureView];
@@ -128,6 +129,10 @@ typedef void(^ZRPropertyChangeBlock)(AVCaptureDevice *captureDevice);
     focusOnImg.alpha = 0;
     [preview addSubview:focusOnImg];
     self.focusOnImage = focusOnImg;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _mediaCaptureView.hidden = NO;
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -145,13 +150,13 @@ typedef void(^ZRPropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (void)cameraDeviceAlternativelyRearOrFront {
     AVCaptureDevice *currentDevice = [self.captureDeviceInput device];
     AVCaptureDevicePosition currentPosition = [currentDevice position];
-  
+    
     AVCaptureDevicePosition toChangePosition = AVCaptureDevicePositionFront;
     if (currentPosition == AVCaptureDevicePositionUnspecified || currentPosition == AVCaptureDevicePositionFront) {
         toChangePosition = AVCaptureDevicePositionBack;
     }
     AVCaptureDevice *toChangeDevice = [self getCameraDeviceWithPosition:toChangePosition];
- 
+    
     //重新获取摄像头视频输入
     AVCaptureDeviceInput *toChangeDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:toChangeDevice error:nil];
     
@@ -178,7 +183,7 @@ typedef void(^ZRPropertyChangeBlock)(AVCaptureDevice *captureDevice);
     AVCaptureConnection *captureConnection = [self.captureMovieFileOutput connectionWithMediaType:AVMediaTypeVideo];
     
     if (![self.captureMovieFileOutput isRecording]) {
-
+        
         //预览图层和视频方向保持一致
         captureConnection.videoOrientation = [self.captureVideoPreviewLayer connection].videoOrientation;
         
@@ -249,7 +254,7 @@ typedef void(^ZRPropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (void)tapScreen:(UITapGestureRecognizer *)gesture {
     CGPoint point = [gesture locationInView:self.previewer];
-
+    
     CGPoint cameraPoint = [self.captureVideoPreviewLayer captureDevicePointOfInterestForPoint:point];
     [self setFocusCursorWithPoint:point];
     [self focusWithMode:AVCaptureFocusModeAutoFocus exposureMode:AVCaptureExposureModeAutoExpose atPoint:cameraPoint];
