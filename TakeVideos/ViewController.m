@@ -35,21 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /*
     
-    https://www.google.com/search?q=iOS%E8%A7%86%E9%A2%91%E6%B0%B4%E5%8D%B0&oq=iOS%E8%A7%86%E9%A2%91%E6%B0%B4%E5%8D%B0&gs_l=psy-ab.3...153273.160125.0.160278.26.19.3.0.0.0.613.3529.2-4j1j1j3.9.0....0...1.1j4.64.psy-ab..17.7.1267...0j0i12k1.g3Qudbt8JIA
-    
-    http://www.hudongdong.com/ios/546.html
-    
-    http://www.jianshu.com/p/5433143cccd8
-    
-    http://blog.csdn.net/likendsl/article/details/7595611
-    
-    http://www.jianshu.com/p/16cb14f53933
-    
-    http://blog.csdn.net/hherima/article/details/72725395
-    
-     */
 }
 
 - (void)previewVideo:(NSURL *)url interval:(NSTimeInterval)interval useFirstCompression:(BOOL)useFirstCompression {

@@ -13,7 +13,7 @@
 #import "ZRVideoPlayerController.h"
 #import "ZRAssetExportSession.h"
 #import "ZRCircleProgress.h"
-
+#import "ZRWaterPrintComposition.h"
 
 
 @interface PreviewerVideoViewController ()
@@ -49,7 +49,7 @@
     self.videoPath.numberOfLines = 0;
     
     [self calculateFizeSize];
-    
+
     if (self.useFirstCompression) {
         [self compressVideo];
     } 
@@ -106,6 +106,13 @@
              
              self.playURL = [NSURL fileURLWithPath:filename];
              
+             [[ZRWaterPrintComposition new] addVideoWaterprintAtURL:self.playURL WithWaterprintImage:[UIImage imageNamed:@"Icon"] withTitleText:@"Victor" iconSize:CGSizeMake(120, 120) completionHandler:^(int status, NSString *errorMsg, NSURL *finishedVideoURL) {
+                 if (status == 0) {
+                     self.playURL = finishedVideoURL;
+                 } else {
+                     NSLog(@"%@", errorMsg);
+                 }
+             }];
              
              dispatch_async(dispatch_get_main_queue(), ^{
                  self.playURL = [NSURL fileURLWithPath:filename];
@@ -186,5 +193,6 @@
     moviePlayer.playVideOnly = YES;
     [self presentViewController:moviePlayer animated:NO completion:nil];
 }
+
 
 @end

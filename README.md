@@ -1,7 +1,8 @@
 # TakeVideo
-An iOS project that takes video with customized User Interfaces and water mark and compression 
+An iOS project that takes video with customized User Interfaces and water mark and compression by AVFoundation.framework , AVCaptureSession, AVAssetWriter, AVCaptureOutput and AVCaptureDeviceInput, AVVideoCompositionInstruction, AVVideoComposition etc.
 
 ## Effect Picture
+![TakeVideo Effect Photo 1](https://github.com/VictorZhang2014/TakeVideo/blob/master/images/TakeVideo_EffectPicture_00.gif "TakeVideo")
 ![TakeVideo Effect Photo 1](https://github.com/VictorZhang2014/TakeVideo/blob/master/images/TakeVideo_EffectPicture_11.png "TakeVideo")
 ![TakeVideo Effect Photo 2](https://github.com/VictorZhang2014/TakeVideo/blob/master/images/TakeVideo_EffectPicture_22.png "TakeVideo")
 ![TakeVideo Effect Photo 2](https://github.com/VictorZhang2014/TakeVideo/blob/master/images/TakeVideo_EffectPicture_33.png "TakeVideo")
@@ -98,7 +99,7 @@ Then calling the code as shown below. This is fourth way to call. The tailored U
     [self presentViewController:takeVideo animated:YES completion:nil];
 ```
 
-## Pay Attention to This
+## Pay Attention to This compression video file
 If you want to compress your video file, you must call one of these snippet code. 
 ```
 [ZRMediaCaptureController videoCompressWithSourceURL:videoURL completion:^(int statusCode, NSString *outputVideoURL) {
@@ -127,6 +128,20 @@ or using the following way
 
 ```
 
-
+## Pay Attention to This water print video
+Importing the header file
+```
+#import "ZRWaterPrintComposition.h"
+```
+Then, call the following code
+```
+[[ZRWaterPrintComposition new] addVideoWaterprintAtURL:self.playURL WithWaterprintImage:[UIImage imageNamed:@"Icon"] withTitleText:@"Victor" iconSize:CGSizeMake(120, 120) completionHandler:^(int status, NSString *errorMsg, NSURL *finishedVideoURL) {
+    if (status == 0) {
+        self.playURL = finishedVideoURL;
+    } else {
+        NSLog(@"%@", errorMsg);
+    }
+}];
+```
 
 

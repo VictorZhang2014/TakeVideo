@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		901E13701F51581A003B181F /* ZRAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E136F1F51581A003B181F /* ZRAssetExportSession.m */; };
 		901E13791F516FE0003B181F /* ZRTakeVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 901E13781F516FE0003B181F /* ZRTakeVideoViewController.m */; };
+		902CFD461F55131600CE098B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 902CFD441F55131600CE098B /* Icon.png */; };
+		902CFD471F55131600CE098B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 902CFD451F55131600CE098B /* Icon@2x.png */; };
+		902CFD4A1F55219600CE098B /* ZRWaterPrintComposition.m in Sources */ = {isa = PBXBuildFile; fileRef = 902CFD491F55219600CE098B /* ZRWaterPrintComposition.m */; };
 		90559B1F1F4FCE67000DCBB8 /* ZRMediaCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90559B181F4FCE67000DCBB8 /* ZRMediaCaptureController.m */; };
 		90559B201F4FCE67000DCBB8 /* ZRMediaCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90559B1A1F4FCE67000DCBB8 /* ZRMediaCaptureView.m */; };
 		90559B211F4FCE67000DCBB8 /* ZRVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90559B1C1F4FCE67000DCBB8 /* ZRVideoCaptureViewController.m */; };
@@ -29,6 +32,10 @@
 		901E136F1F51581A003B181F /* ZRAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRAssetExportSession.m; sourceTree = "<group>"; };
 		901E13771F516FE0003B181F /* ZRTakeVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRTakeVideoViewController.h; sourceTree = "<group>"; };
 		901E13781F516FE0003B181F /* ZRTakeVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRTakeVideoViewController.m; sourceTree = "<group>"; };
+		902CFD441F55131600CE098B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		902CFD451F55131600CE098B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		902CFD481F55219500CE098B /* ZRWaterPrintComposition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRWaterPrintComposition.h; sourceTree = "<group>"; };
+		902CFD491F55219600CE098B /* ZRWaterPrintComposition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRWaterPrintComposition.m; sourceTree = "<group>"; };
 		90559B171F4FCE67000DCBB8 /* ZRMediaCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRMediaCaptureController.h; sourceTree = "<group>"; };
 		90559B181F4FCE67000DCBB8 /* ZRMediaCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRMediaCaptureController.m; sourceTree = "<group>"; };
 		90559B191F4FCE67000DCBB8 /* ZRMediaCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRMediaCaptureView.h; sourceTree = "<group>"; };
@@ -82,6 +89,8 @@
 				901E13781F516FE0003B181F /* ZRTakeVideoViewController.m */,
 				90559B1D1F4FCE67000DCBB8 /* ZRVideoPlayerController.h */,
 				90559B1E1F4FCE67000DCBB8 /* ZRVideoPlayerController.m */,
+				902CFD481F55219500CE098B /* ZRWaterPrintComposition.h */,
+				902CFD491F55219600CE098B /* ZRWaterPrintComposition.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -125,6 +134,8 @@
 		9059C1361F4147B90077FCB5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				902CFD441F55131600CE098B /* Icon.png */,
+				902CFD451F55131600CE098B /* Icon@2x.png */,
 				9059C1371F4147B90077FCB5 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -190,7 +201,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				90559B271F500874000DCBB8 /* PreviewerVideoViewController.xib in Resources */,
+				902CFD471F55131600CE098B /* Icon@2x.png in Resources */,
 				9059C1461F4147B90077FCB5 /* LaunchScreen.storyboard in Resources */,
+				902CFD461F55131600CE098B /* Icon.png in Resources */,
 				9059C1431F4147B90077FCB5 /* Assets.xcassets in Resources */,
 				9059C1411F4147B90077FCB5 /* Main.storyboard in Resources */,
 			);
@@ -203,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				902CFD4A1F55219600CE098B /* ZRWaterPrintComposition.m in Sources */,
 				90559B261F500874000DCBB8 /* PreviewerVideoViewController.m in Sources */,
 				901E13791F516FE0003B181F /* ZRTakeVideoViewController.m in Sources */,
 				90559B1F1F4FCE67000DCBB8 /* ZRMediaCaptureController.m in Sources */,
