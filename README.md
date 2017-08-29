@@ -8,7 +8,7 @@ An iOS project that takes video with customized User Interfaces and water mark a
 ![TakeVideo Effect Photo 2](https://github.com/VictorZhang2014/TakeVideo/blob/master/images/TakeVideo_EffectPicture_33.png "TakeVideo")
 
 ## Let's get started
-There're three ways to call. I'm going to show you on how do you call it.
+There're Four ways to call. I'm going to show you on how do you call it.
 
 #### First way
 Importing this header file
