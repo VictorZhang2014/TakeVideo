@@ -191,6 +191,7 @@
 - (void)previewVideoByURL:(NSURL *)url {
     ZRVideoPlayerController *moviePlayer = [[ZRVideoPlayerController alloc] initWithURL:url];
     moviePlayer.playVideOnly = YES;
+    moviePlayer.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:moviePlayer animated:NO completion:nil];
 }
 

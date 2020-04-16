@@ -86,6 +86,7 @@
         
         ZRVideoPlayerController *moviePlayer = [[ZRVideoPlayerController alloc] initWithURL:url];
         moviePlayer.videoPlayerDelegate = self;
+        moviePlayer.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:moviePlayer animated:NO completion:nil];
     }
 }

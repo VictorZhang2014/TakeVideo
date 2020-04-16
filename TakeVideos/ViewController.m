@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <AVFoundation/AVFoundation.h>
 #import "ZRMediaCaptureController.h"
 #import "ZRVideoCaptureViewController.h"
 #import "PreviewerVideoViewController.h"
@@ -18,7 +19,6 @@
 - (IBAction)OpenCustomUI1:(id)sender;
 - (IBAction)OpenCustomUI2:(id)sender;
 - (IBAction)OpenCustomUI3:(id)sender;
-
 
 @end
 
@@ -35,7 +35,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)authorize {
+    // 询问视频权限
+    __block BOOL isVideoAccessible = NO;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusAuthorized) {
+            isVideoAccessible = YES;
+        } else {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                if (granted) {
+                    isVideoAccessible = YES;
+                } else {
+                    isVideoAccessible = NO;
+                }
+            }];
+        }
+    });
     
+    // 询问音频权限
+    __block BOOL isAudioAccessible = NO;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio] == AVAuthorizationStatusAuthorized) {
+            isAudioAccessible = YES;
+        } else {
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted) {
+                if (granted) {
+                    isAudioAccessible = YES;
+                } else {
+                    isAudioAccessible = NO;
+                }
+            }];
+        }
+    });
+    
+    if (isVideoAccessible && isAudioAccessible) {
+        
+    }
 }
 
 - (void)previewVideo:(NSURL *)url interval:(NSTimeInterval)interval useFirstCompression:(BOOL)useFirstCompression {
@@ -88,6 +125,7 @@
             [self previewVideo:videoURL interval:videoInterval useFirstCompression:YES];
         }
     }];
+    videoCapture.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:videoCapture animated:YES completion:nil];
 }
 
@@ -103,6 +141,7 @@
             [self previewVideo:videoURL interval:videoInterval useFirstCompression:NO];
         }
     }];
+    takeVideo.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:takeVideo animated:YES completion:nil];
 }
 

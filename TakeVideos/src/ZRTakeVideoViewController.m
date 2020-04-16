@@ -347,11 +347,7 @@ ZRVideoPlayerDelegate
 }
 
 - (void)startCapturing {
-    if (TARGET_IPHONE_SIMULATOR) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Do not support Simulator when capturing video!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        return;
-    }
+    NSAssert(TARGET_IPHONE_SIMULATOR, @"Do not support Simulator when capturing video!");
     
     NSString *tempFileName = [NSProcessInfo processInfo].globallyUniqueString;
     self.videoFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[tempFileName stringByAppendingPathExtension:@"mp4"]];
