@@ -347,7 +347,7 @@ ZRVideoPlayerDelegate
 }
 
 - (void)startCapturing {
-    NSAssert(TARGET_IPHONE_SIMULATOR, @"Do not support Simulator when capturing video!");
+    //NSAssert(TARGET_IPHONE_SIMULATOR, @"Do not support Simulator when capturing video!");
     
     NSString *tempFileName = [NSProcessInfo processInfo].globallyUniqueString;
     self.videoFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[tempFileName stringByAppendingPathExtension:@"mp4"]];
@@ -536,6 +536,7 @@ ZRVideoPlayerDelegate
 - (void)previewVideo {
     ZRVideoPlayerController *moviePlayer = [[ZRVideoPlayerController alloc] initWithURL:[NSURL fileURLWithPath:self.videoFilePath]];
     moviePlayer.videoPlayerDelegate = self;
+    moviePlayer.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:moviePlayer animated:NO completion:nil];
 }
 
